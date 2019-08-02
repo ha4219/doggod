@@ -62,11 +62,11 @@ for i, img in enumerate(imgs):
         res_bbs.append(d.rect)
 
 # 파일 저장
-if not os._exists('./data'):
-    os.mkdir('data')
+if (os._exists('./data')):
+    os.mkdir('./data')
 for i, img in enumerate(res):
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     cv2.imwrite('./data/' + str(i).zfill(4) + '.jpg', img)
     np.save('./data/' + str(i).zfill(4) + '.dog', res_shape[i])
-    bbs = np.array((res_bbs[i].left(),res_bbs[i].top(),res_bbs[i].right(),res_bbs[i].bottom()))
+    bbs = np.array((res_bbs[i].left(), res_bbs[i].top(), res_bbs[i].right(), res_bbs[i].bottom()))
     np.save('./data/' + str(i).zfill(4) + '.bbs', bbs)
