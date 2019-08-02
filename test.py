@@ -1,7 +1,7 @@
 '''
     테스트용 파일입니다.
 '''
-model_type = 'cat'
+model_type = 'dog'
 
 
 from keras.models import Model, load_model
