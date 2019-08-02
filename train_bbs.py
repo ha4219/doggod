@@ -37,7 +37,7 @@ for file_path in file_list:
         X_train.append(x)
 
 # 파일을 numpy 배열로 바꿔줌
-X_trai = np.array(X_train)
+X_train = np.array(X_train)
 y_train = np.array(y_train)
 print(X_train.shape)
 print(y_train.shape)

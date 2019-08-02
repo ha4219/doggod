@@ -36,6 +36,7 @@ while True:
     result_img = img.copy()
 
     # predict bounding box
+    print(img.shape)
     img, ratio, top, left = resize_img(img)
 
     inputs = (img.astype('float32') / 255).reshape((1, img_size, img_size, 3))

@@ -3,6 +3,7 @@ from imutils import face_utils
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from functions import resize_img
 
 predictor = dlib.shape_predictor('landmarkDetector.dat')
 detector = dlib.cnn_face_detection_model_v1('dogHeadDetector.dat')
@@ -18,6 +19,7 @@ for img_path in fileList:
         continue
     print(img_path)
     img = cv2.imread(imgs_path+ '/' + img_path)
+    img, _a, _b, _c = resize_img(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, (224, 224))
     imgs.append(img)

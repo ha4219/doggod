@@ -1,20 +1,29 @@
 img_size = 224
+# 학습 데이터 width height 크기
 import cv2
 
+
 # resize 함수들 입니다.
+# python에서 im는 shape 찍어보면 (480, 640, 3)으로 height이랑 width rgb 형태입니다.
 def resize_img(im):
   old_size = im.shape[:2] # old_size is in (height, width) format
+  # ratio 는 비율인데 old_size에 height이랑 width 중 큰 값으로 나눠 비율을 값으로 저장합니다.
   ratio = float(img_size) / max(old_size)
+  # new_size 는 img_size형 태로 바꿔주는 건데 결과적으로 height과 width중 큰 값은 img_size가 되고 아닌값은 더 작게 나옵니다(작은 값은 나중에 black처리로 다시 사이즈를 맞춰줍니다.)
   new_size = tuple([int(x*ratio) for x in old_size])
   # new_size should be in (width, height) format
   im = cv2.resize(im, (new_size[1], new_size[0]))
+  # delta_w, delta_h 둘 중 하나의 값은 0이 나올 것입니다.
   delta_w = img_size - new_size[1]
   delta_h = img_size - new_size[0]
+  # // -> 몫 연산입니다.
   top, bottom = delta_h // 2, delta_h - (delta_h // 2)
   left, right = delta_w // 2, delta_w - (delta_w // 2)
+  #
   new_im = cv2.copyMakeBorder(im, top, bottom, left, right, cv2.BORDER_CONSTANT,
       value=[0, 0, 0])
   return new_im, ratio, top, left
+
 
 # overlay function
 def overlay_transparent(background_img, img_to_overlay_t, x, y, overlay_size=None):
