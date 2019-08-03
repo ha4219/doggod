@@ -55,11 +55,11 @@ for file_name in os.listdir(file_path):
     ori_lmks = new_lmks + new_bb[0]
 
     # visualize
-    cv2.rectangle(ori_img, pt1=tuple(ori_bb[0]), pt2=tuple(ori_bb[1]), color=(255, 255, 255), thickness=10)
+    cv2.rectangle(ori_img, pt1=tuple(ori_bb[0]), pt2=tuple(ori_bb[1]), color=(0, 0, 255), thickness=2)
 
     for i, l in enumerate(ori_lmks):
-        cv2.putText(ori_img, str(i), tuple(l), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.circle(ori_img, center=tuple(l), radius=1, color=(255, 255, 255), thickness=3)
+        cv2.putText(ori_img, str(i), tuple(l), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.circle(ori_img, center=tuple(l), radius=1, color=(255, 255, 255), thickness=2)
 
     plt.imshow(ori_img)
     plt.show()

@@ -13,11 +13,18 @@ imgs = []
 fileList = list(os.listdir(imgs_path))
 fileList.sort()
 
+exception = ['dog00063.jpg', 'dog00066.jpg', 'dog00075.jpg', 'dog00129.jpg', 'dog00130.jpg', 'dog00207.jpg',
+             'dog00254.jpg', 'dog00264.jpg', 'dog00305.jpg', 'dog00308.jpg', 'dog00306.jpg', 'dog00309.jpg',
+             'dog00380.jpg', 'dog00398.jpg', 'dog00430.jpg', 'dog00432.jpg', 'dog00698.jpg']
+
 for img_path in fileList:
     if(img_path == '.DS_Store'):
         continue
+    if(img_path in exception):
+        continue
     print(img_path)
     img = cv2.imread(imgs_path+ '/' + img_path)
+
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, (224, 224))
     imgs.append(img)
